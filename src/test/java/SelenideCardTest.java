@@ -1,6 +1,5 @@
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
-
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -23,12 +22,13 @@ public class SelenideCardTest {
     void shouldDeliveryCard(){
         open("http://localhost:9999/");
         $("[data-test-id='city' ] input").setValue("Нижний Новгород");
-        $("[data-test-id='date'] input").setValue(localDate(7);
+        $("[data-test-id='date'] input").sendKeys(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE);
+        $("[data-test-id='date'] input").setValue(localDate(7));
         $("[data-test-id='name'] input").setValue("Иванов-Сидоров Иван");
         $("[data-test-id='phone'] input").setValue("+79999999999");
         $("[data-test-id='agreement']").click();
         $(".button__content").click();
-        $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(15).plusDays(text(localDate(7))));
+        $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text(localDate(7)));
 
     }
 
