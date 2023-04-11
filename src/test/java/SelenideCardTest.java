@@ -12,14 +12,14 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SelenideCardTest {
 
-   public String localDate (int day) {
+    public String localDate(int day) {
         LocalDate date = LocalDate.now();
         String plusDays = String.valueOf(LocalDate.now());
         return LocalDate.now().plusDays(day).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     @Test
-    void shouldDeliveryCard(){
+    void shouldDeliveryCard() {
         open("http://localhost:9999/");
         $("[data-test-id='city' ] input").setValue("Нижний Новгород");
         $("[data-test-id='date'] input").sendKeys(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE);
